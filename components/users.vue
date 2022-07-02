@@ -4,10 +4,10 @@
     <br />
     <v-data-table :headers="headers" :items="users">
       <template v-slot:[`item.update`]="{ item }">
-        <UpdateUser :user="item" />
+        <UpdateUser @updateUser="getUsers()" :id="item._id" :user="item" />
       </template>
       <template v-slot:[`item.delete`]="{ item }">
-        <DeleteUser @userDeleted="getUsers()" :id="item.id" />
+        <DeleteUser @userDeleted="getUsers()" :id="item._id" />
       </template>
     </v-data-table>
   </v-container>

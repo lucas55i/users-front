@@ -31,8 +31,6 @@ export default Vue.extend({
         });
     },
   },
-  created() {
-    console.log(this.id);
-  },
+ 
 });
 </script>

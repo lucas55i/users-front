@@ -52,6 +52,22 @@ export const actions = {
     });
   },
 
+  updateUser(context: any, id: string) {
+    return new Promise((resolve, reject) => {
+      userService
+        .updateUser(id)
+        .then((user) => {
+          resolve(user);
+        })
+        .catch((err) => {
+          reject(err);
+        })
+        .finally(() => {
+          console.log("Chamada Feita");
+        });
+    });
+  },
+
   deleteUser(context: any, _id: string) {
     return new Promise((resolve, reject) => {
       userService
