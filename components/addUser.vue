@@ -12,7 +12,7 @@
             <span class="text-h5">Adicionar Grupo</span>
           </v-card-title>
           <v-card-text>
-            <v-form ref="addGroupForm">
+            <v-form ref="addUserForm">
               <v-text-field
                 label="Nome"
                 v-model="user.name"
@@ -54,20 +54,13 @@ export default Vue.extend({
   computed: {},
   methods: {
     async addUser() {
-      let user = { ...this.user };
-      await this.$store
-        .dispatch("addUser", this.user)
-        .then(() => {
-          this.dialog = false;
-          this.$emit("userAdded");
-          this.user = {
-            name: "",
-            active: false,
-          };
-        })
-        .catch((err) => {
-          alert(err);
-        });
+      const addUserForm = this.$refs.addUserForm as any;
+      if (addUserForm.validate()) {
+        await this.$store.dispatch("addUser", this.user);
+        this.dialog = false;
+        this.$emit("userAdded");
+        this.user = {};
+      }
     },
   },
   created() {},

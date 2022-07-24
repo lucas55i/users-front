@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <AddUser @userAdded="getUsers" />
+    <AddUser @userAdded="getUsers()" />
     <br />
     <v-data-table :headers="headers" :items="users">
       <template v-slot:[`item.update`]="{ item }">

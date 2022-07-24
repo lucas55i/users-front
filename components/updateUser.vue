@@ -9,17 +9,17 @@
             <span class="text-h5">Editar User</span>
           </v-card-title>
           <v-card-text>
-            <v-form>
+            <v-form ref="updateUserForm">
               <v-text-field
                 label="Nome"
                 v-model="editUser.name"
                 clearable
               ></v-text-field>
-              <v-text-field
+              <!-- <v-text-field
                 label="Ativo"
                 v-model="editUser.active"
                 clearable
-              ></v-text-field>
+              ></v-text-field> -->
             </v-form>
           </v-card-text>
           <v-card-actions>
@@ -59,20 +59,14 @@ export default Vue.extend({
 
   computed: {},
   methods: {
-   async updateUser() {
-    await  this.$store
-        .dispatch("updateUser", this.id)
-        .then(() => {
-          this.dialog = false;
-          this.$emit("userEdited");
-            this.editUser = {
-            name: "",
-            active: false,
-          };
-        })
-        .catch((err) => {
-          alert(err);
-        });
+    async updateUser() {
+      const updateUserForm = this.$refs.updateUserForm as any;
+
+      if (updateUserForm.validate()) {
+        await this.$store.dispatch("updateUser", this.id);
+        this.dialog = false;
+        this.$emit("updateUser");
+      }
     },
   },
   created() {
