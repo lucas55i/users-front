@@ -52,10 +52,10 @@ export const actions = {
     });
   },
 
-  updateUser(context: any, id: string) {
+  updateUser(context: any, _id: string) {
     return new Promise((resolve, reject) => {
       userService
-        .updateUser(id)
+        .updateUser(_id)
         .then((user) => {
           resolve(user);
         })

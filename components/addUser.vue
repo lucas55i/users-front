@@ -22,6 +22,7 @@
                 label="Pais"
                 v-model="user.active"
                 clearable
+                readonly
               ></v-text-field>
             </v-form>
           </v-card-text>
@@ -59,7 +60,6 @@ export default Vue.extend({
         await this.$store.dispatch("addUser", this.user);
         this.dialog = false;
         this.$emit("userAdded");
-        this.user = {};
       }
     },
   },

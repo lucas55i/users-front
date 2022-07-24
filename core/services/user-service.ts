@@ -14,8 +14,8 @@ class UserService {
   async addUser(user: User): Promise<User> {
     return await this.httpClient.post(`/users`, user);
   }
-  async updateUser(id: string): Promise<User> {
-    return await this.httpClient.put(`/users/${id}`);
+  async updateUser(_id: string): Promise<User> {
+    return await this.httpClient.put(`/users/` + _id);
   }
 
   async deleteUser(_id: string): Promise<string> {

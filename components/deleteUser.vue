@@ -5,8 +5,7 @@
 </template>
 
 <script lang="ts">
-import { User } from "../core/models/user";
-import Vue, { PropOptions } from "vue";
+import Vue from "vue";
 
 export default Vue.extend({
   props: {
@@ -21,16 +20,9 @@ export default Vue.extend({
   computed: {},
   methods: {
     async deleteUser() {
-      this.$store
-        .dispatch("deleteUser", this.id)
-        .then(() => {
-          this.$emit("userDeleted");
-        })
-        .catch((err) => {
-          alert(err);
-        });
+      await this.$store.dispatch("deleteUser", this.id);
+      this.$emit("userDeleted");
     },
   },
- 
 });
 </script>

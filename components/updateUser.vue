@@ -4,6 +4,7 @@
       <v-icon>mdi-pencil</v-icon>
 
       <v-dialog v-model="dialog" persistent max-width="600px">
+        
         <v-card>
           <v-card-title>
             <span class="text-h5">Editar User</span>
